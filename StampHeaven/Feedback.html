@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@2.6.11"></script> 
+    <title>Feedback</title>
+    <style>
+        body{
+            
+        background-color:#333;
+        background-size: cover;
+        }
+       .container{
+        background-color: #7c7c7c;
+        width: auto;
+        height:1080px;
+        border: solid #333 3px;
+          
+       }
+       h1{
+        margin-left: 3cm;
+        color:aquamarine;
+       
+       }
+       form{
+        
+        text-align: center;
+        border: #333 solid 3px;
+        width: 500px;
+        min-height: 500px;
+        height: auto;
+        border-radius: 8px;
+        margin-left: 1cm;
+        padding-top: 2cm;
+        background-color: azure;
+
+
+       }
+       input{
+        
+        padding: 20px;
+        margin: 10px 0;
+        width: 80%;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+       }
+       label{
+        padding-top: 15cm;
+        font-size: 20px;
+       }
+       ul{
+        padding-left: 18cm;
+        margin-top:0.2cm;
+       }
+       li{
+       
+        list-style-type: none;
+       }
+       button{
+        padding: 15px;
+        border-radius: 30px;
+        background-color: transparent;
+       }
+       h2{
+        margin-left: 20cm;
+        margin-top: -15cm;
+       }
+       .com1{
+        margin-left: 18cm;
+        margin-top: 1cm;
+       }
+    </style>
+</head>
+<body>
+    <div class="banner2">
+        <div class="navbar">
+            <a href="stamphaven.html"><img src="logo.jpg" class="logo" alt="logo"></a>
+            <ul>
+                <li><a href="stamphaven.html">Home</a></li>
+                <li><a href="media.html">Gallery</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="News.html">News</a></li>
+            </ul>
+        </div>
+    <div class="container" id="app">
+        <h1>Add Your Comments </h1>
+
+        <form>
+            <label for="comment">Enter your comment</label> <br>
+            <input type="text" v-model="newComment"> <br>
+            <button @click.prevent="addComment">Submit</button> <br><br>
+            
+        </form>
+         <h2>Comments</h2>
+         <p class="com1"> Good Job </p>
+         <ul>
+            <li v-for="(comment, index) in comments" :key="index">{{ comment }}</li>
+        </ul>
+    </div>
+   <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+				newComment: '', // after submit newcomment comes here
+				comments: [] //creating array
+			},
+            methods: {
+				addComment: function() {
+					//this code  add new comment to array
+					this.comments.push(this.newComment);
+
+					// Clear input field
+					this.newComment = '';
+				}
+			}
+      })
+   </script> 
+</body>
+</html>
